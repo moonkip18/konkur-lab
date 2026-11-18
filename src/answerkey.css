@@ -1,0 +1,113 @@
+/* Answer-key entry: the visual system for the 95-question grid. */
+
+.choice-group {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.choice {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 74px;
+  min-height: 34px;
+  padding: 5px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink-dim);
+  font-size: 12px;
+  font-weight: 450;
+  cursor: pointer;
+  justify-content: center;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.choice:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+.choice:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Answer group: square-ish, neutral when unselected, tinted when chosen. */
+.choice-answer.selected {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.choice-answer.choice-correct.selected {
+  background: rgba(127, 176, 105, 0.18);
+  border-color: rgba(127, 176, 105, 0.5);
+  color: #d8efc8;
+}
+.choice-answer.choice-wrong.selected {
+  background: rgba(200, 67, 59, 0.2);
+  border-color: rgba(200, 67, 59, 0.5);
+  color: #f3c8c5;
+}
+.choice-answer.choice-blank.selected {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--ink);
+}
+
+/* Difficulty group: pill-shaped so the two groups never read as one control. */
+.choice-diff {
+  border-radius: 100px;
+  border-style: dashed;
+  min-width: 68px;
+}
+.choice-diff.selected {
+  border-style: solid;
+  color: var(--ink);
+}
+.choice-diff-easy.selected {
+  background: rgba(127, 176, 105, 0.14);
+  border-color: rgba(127, 176, 105, 0.45);
+}
+.choice-diff-medium.selected {
+  background: rgba(217, 164, 65, 0.14);
+  border-color: rgba(217, 164, 65, 0.45);
+}
+.choice-diff-hard.selected {
+  background: rgba(200, 67, 59, 0.14);
+  border-color: rgba(200, 67, 59, 0.45);
+}
+
+.choice-fa {
+  font-size: 10px;
+  opacity: 0.65;
+}
+
+@media (max-width: 760px) {
+  /* Bigger tap targets, but a narrower row so all three choices stay visible. */
+  .choice {
+    min-height: 40px;
+    min-width: 66px;
+    padding: 7px 8px;
+    font-size: 12.5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    line-height: 1.15;
+  }
+  .choice-fa {
+    font-size: 9.5px;
+  }
+  .choice-group {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .choice {
+    min-width: 58px;
+    padding: 7px 5px;
+    font-size: 11.5px;
+  }
+}
